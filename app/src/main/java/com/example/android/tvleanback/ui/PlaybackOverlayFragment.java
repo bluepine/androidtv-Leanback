@@ -123,13 +123,6 @@ public class PlaybackOverlayFragment
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        mSession.release();
-        releasePlayer();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
 
@@ -204,11 +197,27 @@ public class PlaybackOverlayFragment
         super.onPause();
         if (mPlayer.getPlayerControl().isPlaying()) {
             boolean isVisibleBehind = getActivity().requestVisibleBehind(true);
-            if (!isVisibleBehind) {
+            if (!isVisibleBehind && !getActivity().inPictureInPicture()) {
                 playPause(false);
             }
         } else {
             getActivity().requestVisibleBehind(false);
+        }
+    }
+
+    @Override
+    public void onPictureInPictureChanged(boolean pictureInPictureMode) {
+        if (pictureInPictureMode) {
+            setFadingEnabled(true);
+        } else {
+            int state = getPlaybackState();
+            if (state == PlaybackState.STATE_PLAYING
+                    || state == PlaybackState.STATE_SKIPPING_TO_NEXT
+                    || state == PlaybackState.STATE_SKIPPING_TO_PREVIOUS) {
+                setFadingEnabled(true);
+            } else {
+                setFadingEnabled(false);
+            }
         }
     }
 
