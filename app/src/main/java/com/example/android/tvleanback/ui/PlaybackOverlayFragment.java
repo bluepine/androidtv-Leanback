@@ -193,7 +193,7 @@ public class PlaybackOverlayFragment
         setOnItemViewSelectedListener(new OnItemViewSelectedListener() {
             @Override
             public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
-                    RowPresenter.ViewHolder rowViewHolder, Row row) {
+                                       RowPresenter.ViewHolder rowViewHolder, Row row) {
             }
         });
         setOnItemViewClickedListener(new ItemViewClickedListener());
@@ -467,7 +467,7 @@ public class PlaybackOverlayFragment
 
     @Override
     public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees,
-            float pixelWidthHeightRatio) {
+                                   float pixelWidthHeightRatio) {
         // Do nothing.
     }
 
@@ -563,7 +563,7 @@ public class PlaybackOverlayFragment
     private final class ItemViewClickedListener implements OnItemViewClickedListener {
         @Override
         public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
-                RowPresenter.ViewHolder rowViewHolder, Row row) {
+                                  RowPresenter.ViewHolder rowViewHolder, Row row) {
 
             if (item instanceof Video) {
                 Video video = (Video) item;

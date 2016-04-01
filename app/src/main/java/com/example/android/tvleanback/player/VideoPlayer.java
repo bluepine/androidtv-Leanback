@@ -97,7 +97,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
         void onError(Exception e);
 
         void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees,
-                float pixelWidthHeightRatio);
+                                float pixelWidthHeightRatio);
     }
 
     /**
@@ -139,14 +139,14 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
         void onBandwidthSample(int elapsedMs, long bytes, long bitrateEstimate);
 
         void onLoadStarted(int sourceId, long length, int type, int trigger, Format format,
-                long mediaStartTimeMs, long mediaEndTimeMs);
+                           long mediaStartTimeMs, long mediaEndTimeMs);
 
         void onLoadCompleted(int sourceId, long bytesLoaded, int type, int trigger, Format format,
-                long mediaStartTimeMs, long mediaEndTimeMs, long elapsedRealtimeMs,
-                long loadDurationMs);
+                             long mediaStartTimeMs, long mediaEndTimeMs, long elapsedRealtimeMs,
+                             long loadDurationMs);
 
         void onDecoderInitialized(String decoderName, long elapsedRealtimeMs,
-                long initializationDurationMs);
+                                  long initializationDurationMs);
 
         void onAvailableRangeChanged(int sourceId, TimeRange availableRange);
     }
@@ -452,7 +452,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees,
-            float pixelWidthHeightRatio) {
+                                   float pixelWidthHeightRatio) {
         for (Listener listener : listeners) {
             listener.onVideoSizeChanged(width, height, unappliedRotationDegrees,
                     pixelWidthHeightRatio);
@@ -475,7 +475,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onDownstreamFormatChanged(int sourceId, Format format, int trigger,
-            long mediaTimeMs) {
+                                          long mediaTimeMs) {
         if (infoListener == null) {
             return;
         }
@@ -522,7 +522,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onAudioTrackUnderrun(int bufferSize, long bufferSizeMs,
-            long elapsedSinceLastFeedMs) {
+                                     long elapsedSinceLastFeedMs) {
         if (internalErrorListener != null) {
             internalErrorListener.onAudioTrackUnderrun(bufferSize, bufferSizeMs,
                     elapsedSinceLastFeedMs);
@@ -538,7 +538,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onDecoderInitialized(String decoderName, long elapsedRealtimeMs,
-            long initializationDurationMs) {
+                                     long initializationDurationMs) {
         if (infoListener != null) {
             infoListener.onDecoderInitialized(decoderName, elapsedRealtimeMs,
                     initializationDurationMs);
@@ -585,7 +585,7 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onLoadStarted(int sourceId, long length, int type, int trigger, Format format,
-            long mediaStartTimeMs, long mediaEndTimeMs) {
+                              long mediaStartTimeMs, long mediaEndTimeMs) {
         if (infoListener != null) {
             infoListener.onLoadStarted(sourceId, length, type, trigger, format, mediaStartTimeMs,
                     mediaEndTimeMs);
@@ -594,9 +594,9 @@ public class VideoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventL
 
     @Override
     public void onLoadCompleted(int sourceId, long bytesLoaded, int type, int trigger,
-            Format format,
-            long mediaStartTimeMs, long mediaEndTimeMs, long elapsedRealtimeMs,
-            long loadDurationMs) {
+                                Format format,
+                                long mediaStartTimeMs, long mediaEndTimeMs, long elapsedRealtimeMs,
+                                long loadDurationMs) {
         if (infoListener != null) {
             infoListener.onLoadCompleted(sourceId, bytesLoaded, type, trigger, format,
                     mediaStartTimeMs,

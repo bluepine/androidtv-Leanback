@@ -152,7 +152,6 @@ public class FetchVideoService extends IntentService {
      *
      * @param videos the JSONArray of videos
      * @return the video source URL.
-     *
      * @throws JSONException
      */
     private String getVideoSourceUrl(final JSONArray videos) throws JSONException {
@@ -202,7 +201,6 @@ public class FetchVideoService extends IntentService {
      * Fetch JSON object from a given URL.
      *
      * @return the JSONObject representation of the response
-     *
      * @throws JSONException
      * @throws IOException
      */

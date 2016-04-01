@@ -86,7 +86,7 @@ public class BrowseErrorFragment extends ErrorFragment {
     public static class SpinnerFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             ProgressBar progressBar = new ProgressBar(container.getContext());
             if (container instanceof FrameLayout) {
                 Resources res = getResources();

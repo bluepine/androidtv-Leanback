@@ -168,7 +168,7 @@ public class VideoDetailsFragment extends DetailsFragment
                 .into(new SimpleTarget<Bitmap>(mMetrics.widthPixels, mMetrics.heightPixels) {
                     @Override
                     public void onResourceReady(Bitmap resource,
-                            GlideAnimation<? super Bitmap> glideAnimation) {
+                                                GlideAnimation<? super Bitmap> glideAnimation) {
                         mBackgroundManager.setBitmap(resource);
                     }
                 });
@@ -325,7 +325,7 @@ public class VideoDetailsFragment extends DetailsFragment
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(final Bitmap resource,
-                            GlideAnimation glideAnimation) {
+                                                GlideAnimation glideAnimation) {
                         row.setImageBitmap(getActivity(), resource);
                         startEntranceTransition();
                     }
@@ -362,7 +362,7 @@ public class VideoDetailsFragment extends DetailsFragment
     private final class ItemViewClickedListener implements OnItemViewClickedListener {
         @Override
         public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
-                RowPresenter.ViewHolder rowViewHolder, Row row) {
+                                  RowPresenter.ViewHolder rowViewHolder, Row row) {
 
             if (item instanceof Video) {
                 Video video = (Video) item;
